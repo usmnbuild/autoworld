@@ -1,0 +1,354 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>AutoWorld — Compare Cars</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet">
+  <style>
+    :root {
+      --gold: #c9a34b;
+    }
+
+    body {
+      background: linear-gradient(180deg, #070708, #0f0f10);
+      color: #eee;
+      font-family: Segoe UI;
+    }
+
+    .navbar {
+      background: #000;
+    }
+
+    .navbar-brand img {
+      height: 65px;
+    }
+
+    .nav-link {
+      color: #ccc !important;
+    }
+
+    .nav-link:hover,
+    .nav-link.active {
+      color: var(--gold) !important;
+    }
+
+    .page-header {
+      background: #000;
+      border-bottom: 1px solid rgba(255, 255, 255, .1);
+    }
+
+    .compare-box {
+      background: rgba(176, 144, 144, 0.05);
+      border: 1px solid rgba(23, 41, 117, 0.08);
+      border-radius: 18px;
+      padding: 30px;
+    }
+
+    .form-select {
+      background: #111;
+      color: #fff;
+      border: 1px solid rgba(255, 255, 255, .15);
+    }
+
+    .btn-gold {
+      background: var(--gold);
+      color: #000;
+      font-weight: 600;
+    }
+
+    .btn-gold:hover {
+      background: #ddb962;
+    }
+
+    .car-img {
+      width: 100%;
+      height: 220px;
+      object-fit: contain;
+      background: #0a0a0a;
+      padding: 15px;
+      border-radius: 15px;
+      display: block;
+      margin: auto;
+    }
+
+    .table {
+      color: #f1f1f1;
+      border-color: rgba(255, 255, 255, 0.15);
+    }
+
+    .table th {
+      background: #111;
+      color: var(--gold);
+      font-weight: 600;
+    }
+
+    .table td {
+      background: #1a1a1a;
+      color: #f1f1f1;
+    }
+
+    .table tr:nth-child(even) td {
+      background: #141414;
+    }
+
+    #result h5 {
+      color: #fff;
+      margin-top: 10px;
+      font-weight: 600;
+    }
+
+    footer {
+      background: #000;
+      border-top: 1px solid rgba(255, 255, 255, .1);
+    }
+
+    @media (max-width:768px) {
+      .car-img {
+        height: 180px;
+      }
+    }
+
+    footer a {
+      color: #aaa;
+      text-decoration: none;
+    }
+
+    footer a:hover {
+      color: var(--gold);
+    }
+  </style>
+</head>
+
+<body>
+
+  <nav class="navbar navbar-expand-lg navbar-dark sticky-top shadow">
+    <div class="container">
+      <a class="navbar-brand d-flex align-items-center gap-2" href="#"><img
+          src="logo autoworld.png"><strong>AutoWorld</strong></a>
+      <button class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#nav"><span
+          class="navbar-toggler-icon"></span></button>
+      <div class="collapse navbar-collapse" id="nav">
+        <ul class="navbar-nav ms-auto">
+          <li class="nav-item"><a class="nav-link" href="catalog.html">Catalogue</a></li>
+          <li class="nav-item"><a class="nav-link active" href="compare.html">Compare</a></li>
+          <li class="nav-item"><a class="nav-link" href="dealers.html">Dealers</a></li>
+          <li class="nav-item"><a class="nav-link" href="finance.html">Finance</a></li>
+          <li class="nav-item"><a class="nav-link" href="contact.html">Contact</a></li>
+          <li class="nav-item"><a class="nav-link" href="warrenty.html">Warranty</a></li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <header class="page-header py-5 text-center">
+    <div class="container">
+      <h1>Compare Cars</h1>
+      <p>Compare all available cars</p>
+    </div>
+  </header>
+
+  <section class="py-5">
+    <div class="container">
+      <div class="compare-box">
+        <div class="row g-3">
+          <div class="col-md-6">
+            <label>Select Car 1</label>
+            <select id="car1" class="form-select"></select>
+          </div>
+          <div class="col-md-6">
+            <label>Select Car 2</label>
+            <select id="car2" class="form-select"></select>
+          </div>
+          <div class="col-12">
+            <button class="btn btn-gold w-100 mt-3" id="compareBtn">Compare</button>
+          </div>
+        </div>
+
+        <hr class="border-secondary my-4">
+
+        <div id="result" class="d-none">
+          <div class="row text-center mb-4">
+            <div class="col-md-6">
+              <img id="img1" class="car-img">
+              <h5 id="name1"></h5>
+            </div>
+            <div class="col-md-6">
+              <img id="img2" class="car-img">
+              <h5 id="name2"></h5>
+            </div>
+          </div>
+
+          <table class="table table-bordered text-center">
+            <tr>
+              <th>Specification</th>
+              <th>Car 1</th>
+              <th>Car 2</th>
+            </tr>
+            <tr>
+              <td>Price</td>
+              <td id="p1"></td>
+              <td id="p2"></td>
+            </tr>
+            <tr>
+              <td>Engine</td>
+              <td id="e1"></td>
+              <td id="e2"></td>
+            </tr>
+            <tr>
+              <td>Transmission</td>
+              <td id="t1"></td>
+              <td id="t2"></td>
+            </tr>
+            <tr>
+              <td>Drive</td>
+              <td id="d1"></td>
+              <td id="d2"></td>
+            </tr>
+            <tr>
+              <td>Mileage</td>
+              <td id="m1"></td>
+              <td id="m2"></td>
+            </tr>
+            <tr>
+              <td>Seats</td>
+              <td id="s1"></td>
+              <td id="s2"></td>
+            </tr>
+          </table>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer class="pt-5 pb-4">
+    <div class="container">
+      <div class="row g-4">
+        <div class="col-md-4">
+          <h5 class="text-warning">AutoWorld</h5>
+          <p>Pakistan’s premium car platform for luxury, performance and trust.</p>
+        </div>
+
+        <div class="col-md-4">
+          <h6 class="text-warning">Quick Links</h6>
+          <ul class="list-unstyled">
+            <li><a href="catalog.html">Catalogue</a></li>
+            <li><a href="compare.html">Compare</a></li>
+            <li><a href="dealers.html">Dealers</a></li>
+            <li><a href="finance.html">Finance</a></li>
+            <li><a href="warrenty.html">Warranty</a></li>
+            <li><a href="contact.html">Contact</a></li>
+          </ul>
+        </div>
+
+        <div class="col-md-4">
+          <h6 class="text-warning">Contact</h6>
+          <p class="mb-1"><i class="fa fa-envelope"></i> support@autoworld.com</p>
+          <p class="mb-1"><i class="fa fa-phone"></i> +92 21 34567890</p>
+        </div>
+      </div>
+
+      <hr class="border-secondary mt-4" />
+      <div class="text-center">
+        © <span id="year"></span> AutoWorld — All Rights Reserved
+      </div>
+    </div>
+  </footer>
+
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  <script>
+    $(document).ready(function () {
+      $("#year").text(new Date().getFullYear());
+
+        const cars = {
+      "Toyota Corolla": { price: "PKR 6,599,000", img: "https://cdn.pixabay.com/photo/2022/04/24/12/26/car-7153508_1280.jpg", engine: "1.6–2.0L Petrol", transmission: "Automatic / CVT", drive: "FWD", mileage: "12–15 km/l", seats: 5 },
+      "Honda City": { price: "PKR 5,000,000", img: "https://play-lh.googleusercontent.com/7aWuowX4KbErLRjsAKAzl0l0suv1lXclvXJPM03AtasANmcBsMzOlxe5tF4Etcxr-hA=w526-h296-rw", engine: "1.5L Petrol", transmission: "Automatic / CVT", drive: "FWD", mileage: "14–15 km/l", seats: 5 },
+      "Honda Civic": { price: "PKR 8,329,000", img: "https://i.ytimg.com/vi/XMfga2V6ZqI/maxresdefault.jpg", engine: "1.8–2.0L Petrol", transmission: "Automatic / CVT", drive: "FWD", mileage: "12–14 km/l", seats: 5 },
+      "Hyundai Elantra": { price: "PKR 8,999,000", img: "https://i.pinimg.com/736x/9a/5b/79/9a5b792d14b8a48a21b0402700f0254e.jpg", engine: "1.6–2.0L Petrol", transmission: "Automatic / CVT", drive: "FWD", mileage: "13–15 km/l", seats: 5 },
+      "Toyota Yaris": { price: "PKR 5,000,000", img: "https://i.pinimg.com/736x/9f/09/1a/9f091a6db4256c58c6ad5e2f52bedcc2.jpg", engine: "1.3–1.5L Petrol", transmission: "Automatic / CVT", drive: "FWD", mileage: "15–16 km/l", seats: 5 },
+      "Changan Alsvin": { price: "PKR 4,999,000", img: "https://images.carmag.co.za/wp-content/uploads/2025/10/Changan-Alsvin-front.jpg", engine: "1.5L Petrol", transmission: "Automatic", drive: "FWD", mileage: "14–15 km/l", seats: 5 },
+      "Hyundai Sonata": { price: "PKR 16,521,000", img: "https://hyundai-nishat.com/wp-content/uploads/2025/01/Highlights-029-1120x600-min.jpg", engine: "2.0–2.5L Petrol", transmission: "Automatic", drive: "FWD/AWD", mileage: "10–12 km/l", seats: 5 },
+      "Proton Saga": { price: "PKR 40,521,000", img: "https://w0.peakpx.com/wallpaper/788/407/HD-wallpaper-2020-proton-saga-anniversary-edition-front-view-exterior-black-sedan-new-black-saga-electric-cars-proton.jpg", engine: "2.0–2.5L Petrol", transmission: "Automatic", drive: "FWD/AWD", mileage: "10–12 km/l", seats: 5 },
+
+      // Hatchbacks & Compact
+      "Suzuki Alto": { price: "PKR 2,400,000", img: "https://suzukifortmotors.com/wp-content/uploads/2020/12/Alto-Solid-White-720x466.jpg", engine: "660cc–1.0L Petrol", transmission: "Manual / Automatic", drive: "FWD", mileage: "18–22 km/l", seats: 5 },
+      "Toyota Aqua": { price: "PKR 3,300,000", img: "https://global.toyota/pages/news/images/2021/07/19/1330/20210719_04_t_w610.jpg", engine: "1.0–1.5L Petrol / Hybrid", transmission: "Automatic", drive: "FWD", mileage: "20–22 km/l", seats: 5 },
+      "Daihatsu Mira": { price: "PKR 2,800,000", img: "https://360view.3dmodels.org/zoom/Daihatsu/Daihatsu_Mira_e-S_2017_1000_0001.jpg", engine: "660cc–1.0L Petrol", transmission: "Manual / Automatic", drive: "FWD", mileage: "18–22 km/l", seats: 5 },
+      "Suzuki Swift": { price: "PKR 4,200,000", img: "https://cache1.pakwheels.com/system/car_generation_pictures/5339/original/swift_cover.jpg", engine: "1.2–1.5L Petrol", transmission: "Manual / Automatic", drive: "FWD", mileage: "16–18 km/l", seats: 5 },
+      "MG 3": { price: "PKR 8,399,000", img: "https://i.brecorder.com/primary/2021/05/60a4eeec61305.jpg", engine: "1.5–1.6L Petrol", transmission: "Manual / Automatic", drive: "FWD", mileage: "15–18 km/l", seats: 5 },
+      "KIA Picanto": { price: "PKR 4,000,000", img: "https://s.yimg.com/ny/api/res/1.2/iZs5s1fKySzH20Ih92Kkng--/YXBwaWQ9aGlnaGxhbmRlcjt3PTEyNDI7aD04Mjc-/https://media.zenfs.com/en/autocar_articles_778/7aa5903d3cfedb171676e1c5f8b42598", engine: "1.0–1.2L Petrol", transmission: "Manual / Automatic", drive: "FWD", mileage: "18–20 km/l", seats: 5 },
+      "FAW V2": { price: "PKR 2,000,000", img: "https://sehgalmotors.pk/cdn/shop/collections/604373_1_46417.jpg", engine: "1.0L Petrol", transmission: "Manual / Automatic", drive: "FWD", mileage: "18–22 km/l", seats: 5 },
+      "Toyota Vitz": { price: "PKR 3,000,000", img: "https://global.toyota/pages/models/images/vitz/vitz_003_s.jpg", engine: "1.0–1.3L Petrol", transmission: "Manual / Automatic", drive: "FWD", mileage: "18–22 km/l", seats: 5 },
+
+      // MPVs / 7‑Seaters
+      "Honda BR-V": { price: "PKR 6,429,000", img: "https://i.pinimg.com/736x/55/5f/0a/555f0ac3b64250108d1b311d10c4194a.jpg", engine: "1.5–1.8L Petrol", transmission: "Automatic", drive: "AWD/FWD", mileage: "12–14 km/l", seats: 7 },
+      "Toyota Rush": { price: "PKR 5,800,000", img: "https://images.pexels.com/photos/2036544/pexels-photo-2036544.jpeg", engine: "1.5–1.8L Petrol", transmission: "Automatic", drive: "AWD", mileage: "12–14 km/l", seats: 7 },
+      "DFSK Glory 580": { price: "PKR 6,300,000", img: "https://upload.wikimedia.org/wikipedia/commons/a/a7/Fengon_580_II_002.jpg", engine: "1.5–2.0L Petrol", transmission: "Automatic", drive: "AWD", mileage: "10–12 km/l", seats: 7 },
+      "Kia Stonic": { price: "PKR 7,100,000", img: "https://www.topgear.com/sites/default/files/2023/01/Large-17983-Stonic1.0T-GDi2.jpg", engine: "1.0–1.5L Petrol", transmission: "Automatic", drive: "FWD", mileage: "14–16 km/l", seats: 5 },
+      "Proton X70": { price: "PKR 9,500,000", img: "https://w0.peakpx.com/wallpaper/365/555/HD-wallpaper-proton-x70-road-2019-cars-suvs-malaysian-cars-2019-proton-x70-proton.jpg", engine: "1.5–2.0L Petrol", transmission: "Automatic", drive: "AWD", mileage: "10–12 km/l", seats: 5 },
+      "Honda Vezel": { price: "PKR 9,500,000", img: "https://www.hdcarwallpapers.com/walls/2022_honda_hr_v_4k-HD.jpg", engine: "1.5–2.0L Petrol", transmission: "Automatic", drive: "AWD", mileage: "10–12 km/l", seats: 5 },
+
+      // SUVs
+      "Toyota Fortuner": { price: "PKR 19,000,000", img: "https://i.pinimg.com/736x/16/9f/97/169f975f74c1c95aea62e97505f174f0.jpg", engine: "2.4–2.8L Diesel/Petrol", transmission: "Automatic", drive: "AWD/4x4", mileage: "8–11 km/l", seats: 7 },
+      "Toyota Prado": { price: "PKR 26,000,000", img: "https://i.ytimg.com/vi/3DITQYm7IA4/hq720.jpg", engine: "2.7–3.5L Petrol/Diesel", transmission: "Automatic", drive: "AWD/4x4", mileage: "8–10 km/l", seats: 7 },
+      "Kia Sportage": { price: "PKR 8,500,000", img: "https://images6.alphacoders.com/118/1185806.jpg", engine: "2.0L Petrol", transmission: "Automatic", drive: "AWD", mileage: "9–11 km/l", seats: 5 },
+      "Hyundai Tucson": { price: "PKR 9,299,000", img: "https://w0.peakpx.com/wallpaper/459/666/HD-wallpaper-2022-hyundai-tucson-n-line.jpg", engine: "2.0–2.5L Petrol", transmission: "Automatic", drive: "AWD", mileage: "8–10 km/l", seats: 5 },
+      "MG HS": { price: "PKR 8,099,000", img: "https://www.mg-center.com/assets/i/model-builder-cars/HSBlack.jpg", engine: "2.0–2.5L Petrol", transmission: "Automatic", drive: "AWD", mileage: "9–11 km/l", seats: 5 },
+      "Haval H6": { price: "PKR 12,895,000", img: "https://i0.wp.com/havalislamabad.com/wp-content/uploads/2025/08/Haval-H6-PHEV-1.png", engine: "2.0–2.5L Petrol", transmission: "Automatic", drive: "AWD", mileage: "8–10 km/l", seats: 5 },
+      "Lexus L570": { price: "PKR 12,895,000", img: "https://media.drive.com.au/obj/tx_q:50,rs:auto:1920:1080:1/driveau/upload/cms/uploads/MH48W8TXScCNvGEbXrX8", engine: "2.0–2.5L Petrol", transmission: "Automatic", drive: "AWD", mileage: "8–10 km/l", seats: 5 },
+      "Land Cruiser V8": { price: "PKR 80,000,000", img: "https://c4.wallpaperflare.com/wallpaper/79/80/885/white-suv-toyota-toyota-wallpaper-preview.jpg", engine: "2.0–2.5L Petrol", transmission: "Automatic", drive: "AWD", mileage: "8–10 km/l", seats: 5 },
+
+      // Luxury Cars
+      "Mercedes S-Class": { price: "PKR 170,000,000", img: "https://w0.peakpx.com/wallpaper/41/446/HD-wallpaper-2021-mercedes-benz-s-class-color-diamond-white-front-three-quarter-car.jpg", engine: "3.0L+ / Hybrid", transmission: "Automatic", drive: "RWD/AWD", mileage: "7–10 km/l", seats: 5 },
+      "BMW i7 Series": { price: "PKR 88,000,000", img: "https://i.redd.it/8gs10u3yyd881.jpg", engine: "Electric / Hybrid", transmission: "Automatic", drive: "RWD/AWD", mileage: "7–10 km/l", seats: 5 },
+      "Audi A8": { price: "PKR 55,000,000", img: "https://wallpapercat.com/w/full/2/1/c/5814844.jpg", engine: "3.0L+ / Hybrid", transmission: "Automatic", drive: "RWD/AWD", mileage: "7–10 km/l", seats: 5 },
+      "Rolls Royce Phantom": { price: "PKR 198,500,000", img: "https://assets.bwbx.io/images/users/iqjWHBFdfxIU/iy72YjpdGHfc/v1/800x-1.jpg", engine: "6.7L V12", transmission: "Automatic", drive: "RWD/AWD", mileage: "7–9 km/l", seats: 5 },
+      "Bentley Flying Spur": { price: "PKR 140,000,000", img: "https://4kwallpapers.com/images/wallpapers/bentley-flying-spur-3840x2160-20010.jpg", engine: "4.0L–6.0L / Hybrid", transmission: "Automatic", drive: "RWD/AWD", mileage: "7–10 km/l", seats: 5 },
+      "Porsche E‑Hybrid": { price: "PKR 35,500,000", img: "https://w0.peakpx.com/wallpaper/956/457/HD-wallpaper-porsche-porsche-panamera-s-e-hybrid-car-grand-tourer-luxury-car-white-car.jpg", engine: "Hybrid / Electric", transmission: "Automatic", drive: "RWD/AWD", mileage: "7–10 km/l", seats: 5 },
+      "Kia EV9": { price: "PKR 43,200,000", img: "https://blog-cdn.el.olx.com.pk/wp-content/uploads/2025/02/12170302/KIA-EV9-Price-in-Pakistan-1-1024x576.webp", engine: "Electric", transmission: "Automatic", drive: "RWD/AWD", mileage: "7–10 km/l", seats: 5 },
+      "Range Rover": { price: "PKR 104,000,000", img: "https://images.unsplash.com/photo-1725815761064-b84c3f4f9b94", engine: "3.0L–5.0L Petrol / Hybrid", transmission: "Automatic", drive: "RWD/AWD", mileage: "7–10 km/l", seats: 5 }
+
+    };
+
+      const carSelect1 = $("#car1");
+      const carSelect2 = $("#car2");
+
+      $.each(cars, function (key, value) {
+        carSelect1.append($("<option></option>").val(key).text(key));
+        carSelect2.append($("<option></option>").val(key).text(key));
+      });
+
+      $("#compareBtn").click(function () {
+        const c1 = carSelect1.val();
+        const c2 = carSelect2.val();
+        if (c1 && c2 && c1 !== c2) {
+          $("#img1").attr("src", cars[c1].img);
+          $("#img2").attr("src", cars[c2].img);
+          $("#name1").text(c1);
+          $("#name2").text(c2);
+          $("#p1").text(cars[c1].price);
+          $("#p2").text(cars[c2].price);
+          $("#e1").text(cars[c1].engine);
+          $("#e2").text(cars[c2].engine);
+          $("#t1").text(cars[c1].transmission);
+          $("#t2").text(cars[c2].transmission);
+          $("#d1").text(cars[c1].drive);
+          $("#d2").text(cars[c2].drive);
+          $("#m1").text(cars[c1].mileage);
+          $("#m2").text(cars[c2].mileage);
+          $("#s1").text(cars[c1].seats);
+          $("#s2").text(cars[c2].seats);
+          $("#result").removeClass("d-none").hide().fadeIn(1000);
+        }
+      });
+
+      // Optional: fade in header and compare box
+      $("header h1, header p, .compare-box").hide().fadeIn(1200);
+    });
+  </script>
+</body>
+
+</html>

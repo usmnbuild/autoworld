@@ -1,0 +1,367 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>AutoWorld — Trusted Dealers</title>
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet">
+    <link href="https://unpkg.com/aos@2.3.4/dist/aos.css" rel="stylesheet">
+
+    <style>
+        :root {
+            --gold: #c9a34b
+        }
+
+        body {
+            background: linear-gradient(180deg, #070708, #0f0f10);
+            color: #eee;
+            font-family: "Segoe UI", Arial
+        }
+
+        /* NAVBAR */
+        .navbar {
+            background: #000
+        }
+
+        .navbar-brand img {
+            height: 65px
+        }
+
+        .nav-link {
+            color: #ccc !important
+        }
+
+        .nav-link:hover,
+        .nav-link.active {
+            color: var(--gold) !important
+        }
+
+        /* HEADER */
+        .page-header {
+            background: #000;
+            border-bottom: 1px solid rgba(255, 255, 255, .1)
+        }
+
+        /* SECTION TITLE */
+        .section-title {
+            font-size: 30px;
+            font-weight: 700;
+            color: var(--gold);
+            margin: 50px 0 25px;
+            border-left: 4px solid var(--gold);
+            padding-left: 15px
+        }
+
+        /* DEALER CARD */
+        .dealer-card {
+            background: rgba(255, 255, 255, .05);
+            border: 1px solid rgba(255, 255, 255, .08);
+            border-radius: 18px;
+            overflow: hidden;
+            transition: .4s;
+            backdrop-filter: blur(6px)
+        }
+
+        .dealer-card:hover {
+            transform: translateY(-12px);
+            box-shadow: 0 20px 40px rgba(201, 163, 75, .25)
+        }
+
+        .dealer-img {
+            width: 100%;
+            height: 220px;
+            object-fit: cover
+        }
+
+        .dealer-body {
+            padding: 20px
+        }
+
+        .dealer-body h5 {
+            color: var(--gold)
+        }
+
+        .map-box iframe {
+            width: 100%;
+            height: 200px;
+            border-radius: 12px;
+            border: 0;
+            margin-top: 12px
+        }
+
+        /* FOOTER */
+        footer {
+            background: #000;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        footer a {
+            color: #aaa;
+            text-decoration: none;
+        }
+
+        footer a:hover {
+            color: var(--gold);
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- NAVBAR -->
+    <nav class="navbar navbar-expand-lg navbar-dark sticky-top shadow">
+        <div class="container">
+            <a class="navbar-brand d-flex align-items-center gap-2" href="index.html">
+                <img src="logo autoworld.png">
+                <strong>AutoWorld</strong>
+            </a>
+
+            <button class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#nav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <div class="collapse navbar-collapse" id="nav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item"><a class="nav-link" href="catalog.html">Catalogue</a></li>
+                    <li class="nav-item"><a class="nav-link" href="compare.html">Compare</a></li>
+                    <li class="nav-item"><a class="nav-link active" href="dealers.html">Dealers</a></li>
+                    <li class="nav-item"><a class="nav-link" href="finance.html">Finance</a></li>
+                    <li class="nav-item"><a class="nav-link" href="contact.html">Contact</a></li>
+                    <li class="nav-item"><a class="nav-link" href="warrenty.html">Warranty</a></li>
+
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- HEADER -->
+    <header class="page-header py-5 text-center">
+        <div class="container">
+            <h1 data-aos="fade-down">Trusted Dealers</h1>
+            <p data-aos="fade-up">
+                Official dealerships in Pakistan
+            </p>
+        </div>
+    </header>
+
+    <section class="py-5">
+        <div class="container">
+
+            <!-- KARACHI -->
+            <h3 class="section-title">Karachi Dealers</h3>
+            <div class="row g-4">
+
+                <div class="col-md-4" data-aos="zoom-in">
+                    <div class="dealer-card">
+                        <img class="dealer-img"
+                            src="https://media.istockphoto.com/id/458075769/photo/toyota-dealerhsip-in-pretoria-south-africa.jpg?s=612x612&w=0&k=20&c=zL54QxtZuvbR2jtv05-VJMvR9DUOHgFEQiLbq0zg5KA=">
+                        <div class="dealer-body">
+                            <h5>Toyota Eastern Motors</h5>
+                            <p>📞 +92 21 34567890</p>
+                            <p>📍 Khalid Bin Waleed Road, Karachi</p>
+                            <div class="map-box">
+                                <iframe
+                                    src="https://www.google.com/maps?q=Toyota+Eastern+Motors+Karachi&output=embed"></iframe>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-4" data-aos="zoom-in">
+                    <div class="dealer-card">
+                        <img class="dealer-img"
+                            src="https://media.istockphoto.com/id/157772074/photo/economical-hybrid-vehicles-on-display-at-honda-dealership.jpg?s=612x612&w=0&k=20&c=C2hK-pgUH-NVihA6rvnU-WbKSoHTwAPZUXASkJcj834=">
+                        <div class="dealer-body">
+                            <h5>Honda Quaid Motors</h5>
+                            <p>📞 +92 21 38976543</p>
+                            <p>📍 Shahrah-e-Faisal, Karachi</p>
+                            <div class="map-box">
+                                <iframe
+                                    src="https://www.google.com/maps?q=Honda+Quaid+Motors+Karachi&output=embed"></iframe>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-4" data-aos="zoom-in">
+                    <div class="dealer-card">
+                        <img class="dealer-img"
+                            src="https://www.shutterstock.com/shutterstock/videos/3399076957/thumb/1.jpg?ip=x480">
+                        <div class="dealer-body">
+                            <h5>Suzuki South Motors</h5>
+                            <p>📞 +92 21 33445566</p>
+                            <p>📍 Korangi Road, Karachi</p>
+                            <div class="map-box">
+                                <iframe
+                                    src="https://www.google.com/maps?q=Pak+Suzuki+Motors+Karachi&output=embed"></iframe>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+            <!-- LAHORE -->
+            <h3 class="section-title">Lahore Dealers</h3>
+            <div class="row g-4">
+
+                <div class="col-md-4" data-aos="zoom-in">
+                    <div class="dealer-card">
+                        <img class="dealer-img"
+                            src="https://www.shutterstock.com/image-photo/khmelnytskyi-ukraine-april-16-2025-600w-2616863597.jpg">
+                        <div class="dealer-body">
+                            <h5>Toyota Garden Motors</h5>
+                            <p>📞 +92 42 35678900</p>
+                            <p>📍 Garden Town, Lahore</p>
+                            <div class="map-box">
+                                <iframe
+                                    src="https://www.google.com/maps?q=Toyota+Garden+Motors+Lahore&output=embed"></iframe>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-4" data-aos="zoom-in">
+                    <div class="dealer-card">
+                        <img class="dealer-img"
+                            src="https://media.gettyimages.com/id/2243019867/photo/honda-cars-showroom-in-tokyo-japan.jpg?s=170667a&w=gi&k=20&c=YVlvMuJ3pdO_B9joC0TDJ_syXK198JaWh6Tz50quLCU=">
+                        <div class="dealer-body">
+                            <h5>Honda Point Lahore</h5>
+                            <p>📞 +92 42 35712345</p>
+                            <p>📍 Ferozepur Road, Lahore</p>
+                            <div class="map-box">
+                                <iframe src="https://www.google.com/maps?q=Honda+Point+Lahore&output=embed"></iframe>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-4" data-aos="zoom-in">
+                    <div class="dealer-card">
+                        <img class="dealer-img"
+                            src="https://www.shutterstock.com/image-photo/kazan-russia-april-04-2023-600w-2524003263.jpg">
+                        <div class="dealer-body">
+                            <h5>Kia Motors Lahore</h5>
+                            <p>📞 +92 42 32244567</p>
+                            <p>📍 Gulberg III, Lahore</p>
+                            <div class="map-box">
+                                <iframe src="https://www.google.com/maps?q=Kia+Motors+Lahore&output=embed"></iframe>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+            <!-- ISLAMABAD -->
+            <h3 class="section-title">Islamabad Dealers</h3>
+            <div class="row g-4">
+
+                <div class="col-md-4" data-aos="zoom-in">
+                    <div class="dealer-card">
+                        <img class="dealer-img"
+                            src="https://www.shutterstock.com/image-photo/toyota-car-dealership-building-cars-260nw-2293020801.jpg">
+                        <div class="dealer-body">
+                            <h5>Toyota Capital Motors</h5>
+                            <p>📞 +92 51 44332211</p>
+                            <p>📍 I-9 Industrial Area, Islamabad</p>
+                            <div class="map-box">
+                                <iframe
+                                    src="https://www.google.com/maps?q=Toyota+Capital+Motors+Islamabad&output=embed"></iframe>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-4" data-aos="zoom-in">
+                    <div class="dealer-card">
+                        <img class="dealer-img"
+                            src="https://www.shutterstock.com/image-photo/ottawa-canada-07052024-honda-dealership-600w-2487913283.jpg">
+                        <div class="dealer-body">
+                            <h5>Honda Classic Motors</h5>
+                            <p>📞 +92 51 33445577</p>
+                            <p>📍 Blue Area, Islamabad</p>
+                            <div class="map-box">
+                                <iframe
+                                    src="https://www.google.com/maps?q=Honda+Classic+Motors+Islamabad&output=embed"></iframe>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-4" data-aos="zoom-in">
+                    <div class="dealer-card">
+                        <img class="dealer-img"
+                            src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT6R5fLeXr4I5CHdinW6ARZbWW1EzUToMqp1w&s">
+                        <div class="dealer-body">
+                            <h5>Suzuki Islamabad Motors</h5>
+                            <p>📞 +92 51 44221155</p>
+                            <p>📍 Kashmir Highway, Islamabad</p>
+                            <div class="map-box">
+                                <iframe
+                                    src="https://www.google.com/maps?q=Suzuki+Islamabad+Motors&output=embed"></iframe>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+    </section>
+
+     <!-- FOOTER -->
+  <footer class="pt-5 pb-4">
+    <div class="container">
+      <div class="row g-4">
+        <div class="col-md-4">
+          <h5 class="text-warning">AutoWorld</h5>
+          <p>
+            Pakistan’s premium car platform for luxury, performance and trust.
+          </p>
+        </div>
+
+        <div class="col-md-4">
+          <h6 class="text-warning">Quick Links</h6>
+          <ul class="list-unstyled">
+            <li><a href="catalog.html">Catalogue</a></li>
+            <li><a href="compare.html">Compare</a></li>
+            <li><a href="dealers.html">Dealers</a></li>
+            <li><a href="finance.html">Finance</a></li>
+            <li><a href="warrenty.html">Warranty</a></li>
+            <li><a href="contact.html">Contact</a></li>
+          </ul>
+        </div>
+
+        <div class="col-md-4">
+          <h6 class="text-warning">Contact</h6>
+          <p class="mb-1">
+            <i class="fa fa-envelope"></i> support@autoworld.com
+          </p>
+          <p class="mb-1">
+            <i class="fa fa-phone"></i> +92 21 34567890
+          </p>
+        </div>
+      </div>
+
+      <hr class="border-secondary mt-4" />
+      <div class="text-center">
+        © <span id="year"></span> AutoWorld — All Rights Reserved
+      </div>
+    </div>
+  </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
+
+    <script>
+        AOS.init({ duration: 900, once: true });
+        document.getElementById("year").innerText = new Date().getFullYear();
+    </script>
+
+</body>
+
+</html>
